@@ -28,10 +28,14 @@ app.get('/', async (req, res) => {
   });
   
 
+  let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 8080;
+}
   const startServer = async () => {
     try {
       connection();
-      app.listen(8080, () => console.log('Server started on port 8080'));
+      app.listen(port, () => console.log(`Server started on port ${port}`));
     } catch (error) {
       console.log(error);
     }
